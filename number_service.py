@@ -1,8 +1,15 @@
+from interface_service import *
+
 #Isso aceita um input e retorna apenas quando for digitado um número, contido entre min e max (incluíndo os dois)
-def quantity_input(min, max):
+def quantity_input(min, max, txt):
+    show_cursor()
+    
     while True:
+        move_cursor(0, 0)
+        clear_line()
+        
         quantity = input(
-            f"Defina o número de destinações (mínimo {min}, máximo {max}): "
+            f"{txt} (mínimo {min}, máximo {max}): "
         )
 
         try:
