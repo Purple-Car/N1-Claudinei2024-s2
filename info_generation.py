@@ -17,9 +17,12 @@ def main():
         
     fill_destinations(len(arr_entregas), arr_entregas)
         
+    clear_terminal()
     map_define(arr_posicoes)
     clear_terminal()
     del_define(arr_entregas)
+    
+    show_cursor()
     
     save_json(arr_posicoes, arr_entregas)
           

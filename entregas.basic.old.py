@@ -1,23 +1,31 @@
 import itertools
-from info_read import read_distances_array, read_deliveries_array
 
-def get_data_from_json():
+def get_user_input():
     """
-    Function to retrieve the destinations, matrix, and deliveries from the JSON file.
+    Função para obter entradas do usuário diretamente no console.
     """
-    # Ler matrix e deliveries do JSON
-    matrix = read_distances_array()
-    deliveries = read_deliveries_array()
+    # Destinos fixos para este exemplo
+    destinations = ['A', 'B', 'C', 'D']
 
-    # Gerar destinations dinâmicamente baseado no tamanho da matrix
-    matrix_size = len(matrix)
-    destinations = [chr(65 + i) for i in range(matrix_size)]  # 'A', 'B', 'C', ...
+    # Matriz de conexões fixa para este exemplo
+    print("Digite a matriz de conexões (4 linhas de números separados por vírgula):")
+    matrix = []
+    for _ in range(4):
+        row = list(map(int, input().strip().split(', ')))
+        matrix.append(row)
+
+    # Entregas fixas para este exemplo
+    deliveries = []
+    print("Digite as entregas (horário de saída, destino e bônus separados por vírgula):")
+    deliveries.append((0, 'B', 1))
+    deliveries.append((5, 'C', 10))
+    deliveries.append((10, 'D', 8))
 
     return destinations, matrix, deliveries
 
 def calculate_route_time(matrix, route):
     """
-    Function to calculate the total time required to travel a route between destinations.
+    Função para calcular o tempo total necessário para percorrer uma rota entre destinos.
     """
     total_time = 0
     for i in range(len(route) - 1):
@@ -26,7 +34,7 @@ def calculate_route_time(matrix, route):
 
 def calculate_profit(matrix, destinations, deliveries, sequence):
     """
-    Function to calculate the total profit based on the sequence of deliveries.
+    Função para calcular o lucro total baseado na sequência de entregas.
     """
     total_profit = 0
     current_time = 0
@@ -47,7 +55,7 @@ def calculate_profit(matrix, destinations, deliveries, sequence):
 
 def find_best_sequence(destinations, matrix, deliveries):
     """
-    Function to find the best delivery sequence and the maximum profit.
+    Função para encontrar a melhor sequência de entregas e o lucro máximo.
     """
     max_profit = 0
     best_sequence = None
@@ -60,7 +68,7 @@ def find_best_sequence(destinations, matrix, deliveries):
 
 def display_results(sequence, profit):
     """
-    Function to display the delivery sequence and the total profit.
+    Função para exibir a sequência de entregas e o lucro total.
     """
     if sequence:
         print("Melhor sequência de entregas:")
@@ -71,9 +79,6 @@ def display_results(sequence, profit):
         print("Nenhuma entrega possível.")
 
 # Código principal
-destinations, matrix, deliveries = get_data_from_json()
-#print(destinations)
-#print(matrix)
-#print(deliveries)
+destinations, matrix, deliveries = get_user_input()
 best_sequence, max_profit = find_best_sequence(destinations, matrix, deliveries)
 display_results(best_sequence, max_profit)
