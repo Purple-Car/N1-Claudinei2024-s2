@@ -1,5 +1,4 @@
-Alunos:
-
+## Alunos:
 
 Lukas Thiago Rodrigues
 
@@ -11,10 +10,7 @@ Mateus Akira de Oliveira Muranaka
 
 Matheus Gabriel da Silva
 
-
-
-Programas Rodáveis:
-
+## Programas Rodáveis:
 
 info_generation.py
 
